@@ -16,9 +16,10 @@ class AnswerOptionsController < ApplicationController
   # POST /answer_options 
   def create
     @answer_option = AnswerOption.new(answer_option_params)
+    @answer_option.survey_question_id = params[:survey_question_id]
 
       if @answer_option.save
-        render json: get_answer_options, status: :created, location: @answer_option
+        render json: get_answer_options, status: :created
 
       else
         render json: @answer_option.errors, status: :unprocessable_entity

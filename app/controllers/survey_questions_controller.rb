@@ -10,7 +10,7 @@ class SurveyQuestionsController < ApplicationController
 
   # GET /survey_questions/1
   def show
-    render json: @survey_question
+    render json: @survey_question.to_json(include: :answer_options)
   end
 
   # POST /survey_questions
