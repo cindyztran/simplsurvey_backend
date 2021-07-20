@@ -1,0 +1,2 @@
+class ChosenAnswer < ApplicationRecord
+end
