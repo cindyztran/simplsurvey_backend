@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ :show :update :destroy ]
-  protect_from_forgery with: :null_session
+
 
   # GET /users 
   def index
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
 
 
-  # DELETE /users/1 
+  # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
     render json: @user
