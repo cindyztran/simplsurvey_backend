@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+10.times do 
+    SurveyQuestion.create(
+        survey_question_text: Faker::Lorem.question,
+        categories: Faker::Hipster.word
+    )
+end
