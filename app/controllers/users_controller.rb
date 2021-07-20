@@ -38,18 +38,19 @@ class UsersController < ApplicationController
         render json: @user.errors, status: :unprocessable_entity 
       end
     end
-  end
-
-
+  
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-    render json: @user
+   User.find(params[:id]).destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def get_users 
+      User.order('created_at DESC')
+    end
+
     def set_user
       @user = User.find(params[:id])
     end
@@ -58,4 +59,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:users).permit(:google_id)
     end
+end
 
