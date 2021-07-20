@@ -55,3 +55,8 @@ AnswerOption.create([
 },
     
 ])
+
+10.times do
+    User.create(
+        google_id: Faker::Hipster.word)
+end
