@@ -1,7 +1,7 @@
 class SurveyQuestionsController < ApplicationController
   before_action :set_survey_question, only: [:show, :update, :destroy]
 
-  # GET /survey_questions
+  # GET /survey_questions #includes all answer_options
   def index
     @survey_questions = SurveyQuestion.all
 

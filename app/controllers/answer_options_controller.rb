@@ -1,19 +1,7 @@
 class AnswerOptionsController < ApplicationController
-  before_action :set_answer_option, only: %i[ :show, :update, :destroy ]
+  before_action :set_answer_option, only: %i[:update, :destroy ]
 
-  # GET /answer_options 
-  def index
-    @answer_options = get_answer_options
-    
-    render json: @answer_options
-  end
-
-  # GET /answer_options/1 
-  def show
-    render json: @answer_option
-  end
-
-  # POST /answer_options 
+  # POST /survey_questions/:survey_question_id/answer_options 
   def create
     @answer_option = AnswerOption.new(answer_option_params)
     @answer_option.survey_question_id = params[:survey_question_id]
@@ -27,22 +15,21 @@ class AnswerOptionsController < ApplicationController
       end
     end
   
-  # PATCH/PUT /answer_options/1 
+  # PATCH/PUT /survey_questions/:survey_question_id/answer_options/:id 
   def update
-      if @answer_option.update(answer_option_params)
-        render json: get_answer_options 
-
-      else
-        render json: @answer_option.errors, status: :unprocessable_entity
-
-      end
+    @answer_option = AnswerOption.find(params[:id])
+    if @answer_option.update(answer_option_params)
+      render json: @answer_option
+    else
+      render json: @answer_option.errors, status: :unprocessable_entity
     end
+  end
 
 
-  # DELETE /answer_options/1 
+  # DELETE /survey_questions/:survey_question_id/answer_options/:id answer_options/1 
   def destroy
+    @answer_option = AnswerOption.find(params[:id])
     @answer_option.destroy
-    render json: get_answer_options
   end
 
   private
