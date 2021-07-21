@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'survey_questions#index'
   resources :users
   resources :chosen_answers
   resources :survey_questions do
