@@ -17,6 +17,7 @@ class ChosenAnswersController < ApplicationController
   def create
     @chosen_answer = ChosenAnswer.new(chosen_answer_params)
     @chosen_answer.user_id = params[:user_id]
+    
 
     if @chosen_answer.save
       render json: @chosen_answer, status: :created
@@ -50,9 +51,8 @@ class ChosenAnswersController < ApplicationController
     def set_chosen_answer
       @chosen_answer = ChosenAnswer.find(params[:id])
     end
-  end
 
-#     def chosen_answer_params
-#       params.fetch(:chosen_answer, {})
-#     end
-# end
+    def chosen_answer_params
+      params.require(:chosen_answer).permit(:survey_question_id, :answer_option_id, :user_id)
+    end
+end
