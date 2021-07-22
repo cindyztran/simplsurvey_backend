@@ -63,5 +63,8 @@ end
 
 
 ChosenAnswer.create(survey_question_id: 1, answer_option_id: 1, user_id: 1)
+ChosenAnswer.create(survey_question_id: 1, answer_option_id: 2, user_id: 5)
+ChosenAnswer.create(survey_question_id: 3, answer_option_id: 1, user_id: 4)
+ChosenAnswer.create(survey_question_id: 5, answer_option_id: 3, user_id: 4)
 ChosenAnswer.create(survey_question_id: 2, answer_option_id: 2, user_id: 1)
-ChosenAnswer.create(survey_question_id: 2, answer_option_id: 2, user_id: 1)
+ChosenAnswer.create(survey_question_id: 2, answer_option_id: 2, user_id: 2)
