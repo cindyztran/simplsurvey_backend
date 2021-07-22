@@ -21,7 +21,7 @@ class ChosenAnswersController < ApplicationController
         render json: @chosen_answer, status: :created
       elsif @chosen_answer = ChosenAnswer.new(chosen_answer_params)
         @chosen_answer.save
-        render json: @chosen_answer, status: :created
+        render json: get_chosen_answers, status: :created
       else  
         render json: @chosen_answer.errors, status: :unprocessable_entity
     end
