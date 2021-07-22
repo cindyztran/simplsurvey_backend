@@ -16,6 +16,7 @@ class ChosenAnswersController < ApplicationController
   # POST /chosen_answers
   def create
     @chosen_answer = ChosenAnswer.new(chosen_answer_params)
+    @chosen_answer.user_id = params[:user_id]
 
     if @chosen_answer.save
       render json: @chosen_answer, status: :created
