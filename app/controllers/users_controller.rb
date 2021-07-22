@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
 
 
-  # PATCH/PUT /users/1 
+  # PATCH/PUT /users/:google_id
   def update
     user = User.find_by(:google_id => params[:google_id])
       if user.update(user_params)
