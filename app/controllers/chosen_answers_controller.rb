@@ -16,14 +16,14 @@ class ChosenAnswersController < ApplicationController
   # POST /chosen_answers
   def create
     @chosen_answer = ChosenAnswer.new(chosen_answer_params)
-    @chosen_answer.user_id = params[:user_id]
-    
-
-    if @chosen_answer.save
-      render json: @chosen_answer, status: :created
-
-    else
-      render json: @chosen_answer.errors, status: :unprocessable_entity
+    if @chosen_answer.user_id = params[:user_id]
+        @chosen_answer.save
+        render json: @chosen_answer, status: :created
+      elsif @chosen_answer = ChosenAnswer.new(chosen_answer_params)
+        @chosen_answer.save
+        render json: @chosen_answer, status: :created
+      else  
+        render json: @chosen_answer.errors, status: :unprocessable_entity
     end
   end
 
