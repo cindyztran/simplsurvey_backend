@@ -6,7 +6,14 @@ class UsersController < ApplicationController
   # GET /users 
   def index
     @users = User.all
-    render json: @users
+    render json: @users.to_json(include: {
+      chosen_answers: {
+        include: {
+          survey_question: {}
+        }
+      } 
+
+    })
 
   end
 

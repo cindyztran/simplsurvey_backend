@@ -1,6 +1,12 @@
 class AnswerOptionsController < ApplicationController
   before_action :set_answer_option, only: %i[:update, :destroy ]
 
+  #GET 
+  def index
+    @answer_options = get_answer_options
+    
+    render json: @answer_options
+  end
   # POST /survey_questions/:survey_question_id/answer_options 
   def create
     @answer_option = AnswerOption.new(answer_option_params)

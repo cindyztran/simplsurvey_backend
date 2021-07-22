@@ -5,7 +5,13 @@ class SurveyQuestionsController < ApplicationController
   def index
     @survey_questions = SurveyQuestion.all
 
-    render json: @survey_questions.to_json(include: :answer_options)
+    render json: @survey_questions.to_json(include: {
+      answer_options: {
+        include: {
+          chosen_answers: {}
+        } 
+      }
+    })
   end
 
   # GET /survey_questions/1
