@@ -12,7 +12,7 @@ class ChosenAnswersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create chosen_answer" do
     assert_difference('ChosenAnswer.count') do
-      post chosen_answers_url, params: { chosen_answer: {  } }, as: :json
+      post chosen_answers_url, params: { chosen_answer: { answer_option_id: @chosen_answer.answer_option_id, survey_question_id: @chosen_answer.survey_question_id, user_id: @chosen_answer.user_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ChosenAnswersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update chosen_answer" do
-    patch chosen_answer_url(@chosen_answer), params: { chosen_answer: {  } }, as: :json
+    patch chosen_answer_url(@chosen_answer), params: { chosen_answer: { answer_option_id: @chosen_answer.answer_option_id, survey_question_id: @chosen_answer.survey_question_id, user_id: @chosen_answer.user_id } }, as: :json
     assert_response 200
   end
 
