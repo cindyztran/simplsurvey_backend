@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :survey_questions
   root 'welcome#index'
   resources :users, param: :google_id do    
     resources :chosen_answers

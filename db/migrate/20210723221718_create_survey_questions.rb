@@ -4,6 +4,7 @@ class CreateSurveyQuestions < ActiveRecord::Migration[6.1]
       t.text :survey_question_text
       t.string :categories
       t.integer :total_votes
+      t.integer :user_id
 
       t.timestamps
     end

@@ -12,7 +12,7 @@ class SurveyQuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create survey_question" do
     assert_difference('SurveyQuestion.count') do
-      post survey_questions_url, params: { survey_question: { categories: @survey_question.categories, survey_question_text: @survey_question.survey_question_text, total_votes: @survey_question.total_votes } }, as: :json
+      post survey_questions_url, params: { survey_question: { categories: @survey_question.categories, survey_question_text: @survey_question.survey_question_text, total_votes: @survey_question.total_votes, user_id: @survey_question.user_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class SurveyQuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update survey_question" do
-    patch survey_question_url(@survey_question), params: { survey_question: { categories: @survey_question.categories, survey_question_text: @survey_question.survey_question_text, total_votes: @survey_question.total_votes } }, as: :json
+    patch survey_question_url(@survey_question), params: { survey_question: { categories: @survey_question.categories, survey_question_text: @survey_question.survey_question_text, total_votes: @survey_question.total_votes, user_id: @survey_question.user_id } }, as: :json
     assert_response 200
   end
 
