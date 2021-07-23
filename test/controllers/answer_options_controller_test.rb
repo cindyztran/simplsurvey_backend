@@ -12,7 +12,7 @@ class AnswerOptionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create answer_option" do
     assert_difference('AnswerOption.count') do
-      post answer_options_url, params: { answer_option: { answer_number: @answer_option.answer_number, answer_text: @answer_option.answer_text, survey_question_id: @answer_option.survey_question_id } }, as: :json
+      post answer_options_url, params: { answer_option: { answer_numeric: @answer_option.answer_numeric, answer_text: @answer_option.answer_text, survey_question_id: @answer_option.survey_question_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class AnswerOptionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update answer_option" do
-    patch answer_option_url(@answer_option), params: { answer_option: { answer_number: @answer_option.answer_number, answer_text: @answer_option.answer_text, survey_question_id: @answer_option.survey_question_id } }, as: :json
+    patch answer_option_url(@answer_option), params: { answer_option: { answer_numeric: @answer_option.answer_numeric, answer_text: @answer_option.answer_text, survey_question_id: @answer_option.survey_question_id } }, as: :json
     assert_response 200
   end
 

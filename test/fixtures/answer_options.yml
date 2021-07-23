@@ -2,10 +2,10 @@
 
 one:
   answer_text: MyText
-  answer_number: 1
+  answer_numeric: 1
   survey_question_id: 1
 
 two:
   answer_text: MyText
-  answer_number: 1
+  answer_numeric: 1
   survey_question_id: 1
