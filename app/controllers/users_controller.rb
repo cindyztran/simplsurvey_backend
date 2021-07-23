@@ -6,14 +6,21 @@ class UsersController < ApplicationController
   # GET /users 
   def index
     @users = User.all
-    render json: @users
+    render json: @users.to_json(include: {
+      chosen_answers: {
+        include: {
+          survey_question: {}
+        }
+      } 
+
+    })
 
   end
 
-  # GET /users/1
+  # GET /users/:google_id
   def show
-    user = User.find(params[:id])
-    render json: user
+    user = User.find_by(:google_id => params[:google_id])
+    render json: user.to_json(include: :survey_questions)
   end
 
   # POST /users 
@@ -29,20 +36,22 @@ class UsersController < ApplicationController
 
 
 
-  # PATCH/PUT /users/1 
+  # PATCH/PUT /users/:google_id
   def update
-      if @user.update(user_params)
-        render json: @user, status: :ok, location: @user 
+    user = User.find_by(:google_id => params[:google_id])
+      if user.update(user_params)
+        render json: user, status: :ok, location: user 
 
       else
-        render json: @user.errors, status: :unprocessable_entity 
+        render json: user.errors, status: :unprocessable_entity 
       end
     end
   
 
-  # DELETE /users/1 or /users/1.json
+  # DELETE /users/:google_id
   def destroy
-   User.find(params[:id]).destroy
+    user = User.find_by(:google_id => params[:google_id])
+    user.destroy
   end
 
   private
@@ -57,7 +66,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:users).permit(:google_id)
+      params.require(:user).permit(:google_id)
     end
 end
 

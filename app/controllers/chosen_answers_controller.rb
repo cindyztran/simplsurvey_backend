@@ -16,12 +16,14 @@ class ChosenAnswersController < ApplicationController
   # POST /chosen_answers
   def create
     @chosen_answer = ChosenAnswer.new(chosen_answer_params)
-
-    if @chosen_answer.save
-      render json: @chosen_answer, status: :created
-
-    else
-      render json: @chosen_answer.errors, status: :unprocessable_entity
+    if @chosen_answer.user_id = params[:user_id]
+        @chosen_answer.save
+        render json: @chosen_answer, status: :created
+      elsif @chosen_answer = ChosenAnswer.new(chosen_answer_params)
+        @chosen_answer.save
+        render json: get_chosen_answers, status: :created
+      else  
+        render json: @chosen_answer.errors, status: :unprocessable_entity
     end
   end
 
@@ -49,9 +51,8 @@ class ChosenAnswersController < ApplicationController
     def set_chosen_answer
       @chosen_answer = ChosenAnswer.find(params[:id])
     end
-  end
 
-#     def chosen_answer_params
-#       params.fetch(:chosen_answer, {})
-#     end
-# end
+    def chosen_answer_params
+      params.require(:chosen_answer).permit(:survey_question_id, :answer_option_id, :user_id)
+    end
+end
