@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :users do
+  resources :users, param: :google_id do    
     resources :chosen_answers
   end
   resources :survey_questions do
